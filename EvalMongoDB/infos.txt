@@ -1,0 +1,15 @@
+Ce sur quoi nous devons communiquer :
+- Flask : Micro Framework Python, solution la plus adaptée à la demande (très léger, pas de gestion d'user etc. Juste besoin d'afficher des datas).
+De plus ça a été l'opportunité de découvrir un nouveau Framework
+Aidé par le tuto suivant : https://codewithsarath.com/a-simple-to-do-python-flask-application-with-mongodb/
+
+- Création d'un CRUD qui affiche une liste de tâches qui prend ces arguments : statut, nom, description, date, priorité.
+Il est possible de modifier et de supprimer ces tâches.
+Ces tâches peuvent s'afficher en fonction de leur statur effectué ou non.
+
+- Il existe une fonction de recherche qui prend un nom, une description, une date ou une proirité en argument.
+
+Améliorations :
+- Afficher en fonction de la date
+- Filtrer en fonction de l'importance de la tâche
+- Améliorer la recherche
