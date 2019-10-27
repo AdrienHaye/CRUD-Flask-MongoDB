@@ -1,0 +1,85 @@
+<html>
+	<head>
+		<title>{{title}}</title>
+		<link rel="stylesheet" type="text/css"  href="{{ url_for('static',filename='assets/style.css')}}" >
+		<link rel="stylesheet" type="text/css"  href="{{ url_for('static',filename='assets/emoji.css')}}" >
+		<script src="{{ url_for('static',filename='assets/twemoji.min.js')}}"></script>
+		<script src="{{ url_for('static',filename='assets/emoji.js')}}"></script>
+	</head>
+<body>
+	<h1>{{heading}}</h1>
+	<ul>
+		<li><a href="/list" class="{{ a1 }}">Toutes les tâches</a></li>
+		<li><a href="/" class="{{ a2 }}">Non complétées</a></li>
+		<li><a href="/completed" class="{{ a3 }}">Complétées</a></li>
+	</ul>
+	<hr>
+	{% if taches[0] %}
+	<div span="right">
+	<form action="/search"	method="GET" >
+		<table class="none" id="close">
+		<tr>
+		<td></td><td></td>
+		<td><big><b>Rechercher une tâche :</b></big></td>
+		<td><select name="refer" required>
+			<option value="name">Nom de la tâche</option>
+			<option value="desc">Description</option>
+			<option value="date">Date</option>
+			<option value="pr">Priorité</option>
+		</select></td>
+		<td><input type="text" name="key" placeholder="Search Task" size="15" /></td>
+		<td><button type="submit">Rechercher</button></td>
+		</tr>
+		</table>
+	</form>
+	</div>
+	<b><big>Liste des tâches :</big></b>
+
+	<table>
+
+	    <tr id="row">
+	    	<th class="status">Statut</th>
+	    	<th class="name">Nom de la tâche</th>
+	    	<th class="desc">Description</th>
+	    	<th class="date">Date</th>
+	    	<th class="pr">Priorité</th>
+		<th class="func1">Supprimer</th>
+		<th class="func2">Modifier</th>
+	    </tr>
+
+	{% for tache in taches %}
+		<tr class="datas">
+			<td><a href="./done?_id={{ tache['_id'] }}"><input type="image" src="static/images/{{tache['done']}}.png" alt="Submit ME"></a></td>
+			<td class="name">{{ tache["name"] }}</td>
+			<td class="desc">{{ tache["desc"] }}</td>
+			<td class="date">{{ tache["date"] }}</td>
+			<td class="pr">{{ tache["pr"] }}</td>
+			<td class="func1"><a href="./remove?_id={{ tache['_id'] }}"><button type="submit">Supprimer</button></a></td>
+			<td class="func1"><a href="./update?_id={{ tache['_id'] }}"><button type="submit">Mofifier</button></a></td>
+		</tr>
+	{% endfor %}
+	</table>
+
+	{% else %}
+		<h4>Il n'y a pas de tâches dans la liste</h4>
+	{% endif %}
+
+	<hr/>
+
+	<form action="/action" method="POST">
+	<table class="none">
+		<tr>
+			<td><b><big><label>Ajouter une tâche : </label></big></b></td>
+		</tr>
+		<tr>
+		<td><input type="text" name="name" placeholder="Nom de la tâche" /></td>
+		<td><textarea name="desc" rows="1" cols="30" placeholder="Description de la tâche..." required></textarea></td>
+		<td><input type="text" name="date" placeholder="Date" /></td>
+		<td><input type="text" name="pr" placeholder="Priorité" /></td>
+		<td><button type="submit"> Créer </button></td>
+		</tr>
+	</form>
+
+	</table>
+</body>
+</html>
