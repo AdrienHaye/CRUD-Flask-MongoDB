@@ -16,6 +16,7 @@ def redirect_url():
            request.referrer or \
            url_for('index')
 
+@app.route("/")
 @app.route("/list")
 def lists ():
 	#Affiche toutes les tâches
@@ -26,7 +27,6 @@ def lists ():
 
 	return render_template('index.html', a1=a1, taches=taches_select, title=title, heading=heading)
 
-@app.route("/")
 @app.route("/uncompleted")
 def tasks ():
 	#Affiche uniquement les tâches incomplètes
