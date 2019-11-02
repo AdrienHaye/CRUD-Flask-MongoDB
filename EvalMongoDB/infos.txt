@@ -12,4 +12,14 @@ Ces tâches peuvent s'afficher en fonction de leur statur effectué ou non.
 Améliorations :
 - Afficher en fonction de la date
 - Filtrer en fonction de l'importance de la tâche
-- Améliorer la recherche
+- Améliorer la recherche (ElasticSearch par exemple)
+
+
+Lancement de l'appli :
+
+Dépendances :
+- Flask
+- PyMongo (bibliothèque qui facilite la connexion et la communication entre le projet Flask et la bdd Mongo)
+- bson (Permet de récupérer l'id de l'objet demandé et d'alléger la syntaxe des requêtes)
+
+Aller dans le répertoire du projet et lancer une commande "python app.py"
